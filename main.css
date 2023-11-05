@@ -1,0 +1,209 @@
+/* dark red: #9e0b0f
+light red: #b8101f
+*/
+html {
+    height: 100%;
+  }
+  
+  ul {
+    padding-left: 1em;
+    margin-bottom: 0px;
+  }
+  
+  @font-face {
+    font-family: 'Freshman';
+    src: url('../font/freshman.ttf');
+  }
+  
+  @keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+  }
+  
+  .page-header {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+  }
+  
+  .panel-title {
+    font-weight: bolder;
+    font-size: inherit;
+  }
+  
+  #mainInfoWrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 2em; /*I dont like to use vw because it messes up fonts on phones*/
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .megapanel {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  #mHeader {
+    font-family: 'Freshman', sans-serif;
+  }
+  
+  #mHeader:hover {
+    color: #9e0b0f;
+  }
+  
+  #fetchIssue {
+    display: none;
+  }
+  
+  #schedule-body{
+    padding: 0;
+    display: flex;
+    border-bottom: solid #f2dede thin;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: stretch;
+    font-size: larger;
+  }
+  
+  .announcement-title {
+    font-style: italic;
+  }
+  
+  #announcements-list {
+    
+  }
+  
+  #announcements-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  
+  #announcements-title{
+    margin: 10px 15px 10px 15px;
+  }
+  
+  #announcements-buttons-container{
+    flex-grow: 1;
+    display: flex;
+    border-left: 1px solid #f2c3c9;
+  }
+  
+  .announcement-button{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #announcements-progress{
+    height: .1em;
+    width: 100%;
+  }
+  
+  #announcements-progress-bar{
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+    background-color: #f2c3c9;
+  }
+  
+  .announcement-button:nth-child(1),
+  .announcement-button:nth-child(2){
+    border-right: 1px solid #f2c3c9;
+  }
+  
+  .announcement-button:hover{
+    background-color: #f2d9d9;
+  }
+  
+  .blockContainer{
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 15px;
+    border-right: solid #f2dede thin;
+  }
+  
+  .lunchBlock::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f2e7";
+    margin-right: .3em;
+  }
+  
+  .flexBlock::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f44b";
+    margin-right: .3em;
+    margin-left: .3em;
+  }
+  
+  .noBorder {
+    border-right: none;
+  }
+  
+  .fadeHidden {
+    visibility: hidden;
+    opacity: 0;
+    margin: 0px;
+    height: 0;
+    transition: visibility 0s .25s, opacity .25s linear;
+    /*transition: all .25s ease .25s;*/
+  }
+  
+  .glyphicon.spinning {
+    animation: spin 1s infinite linear;
+  }
+  
+  /*changes font on phones */
+  @media only screen and (max-width: 500px) {
+    #schedule-progress-bar{
+      font-size: 1em;
+    }
+  
+    #announcements-buttons-container{
+      border-top: 1px solid #f2c3c9;
+      border-left: 0;
+    }
+  
+    .announcement-button{
+      padding: 10px 0 10px 0;
+    }
+  
+    .blockContainer{
+      font-size: .8em;
+      padding: 8px 10px 8px 10px;
+    }
+  
+    #mainInfoWrapper{
+      font-size: 1.5em;
+    }
+  
+    .page-header{
+      flex-direction: column;
+    }
+  
+    #lastUpdated {
+      font-size: 5vw;
+    }
+  }
+  
+  @media only screen and (min-width: 1900px) {
+    #schedule-progress-bar{
+      font-size: .7em;
+      padding-top: .3em;
+      padding-bottom: .3em;
+    }
+  
+    #mainInfoWrapper{
+      font-size: 3em;
+    }
+  }
+  
