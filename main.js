@@ -1,8 +1,9 @@
 function getCurrentDate() {
     var currentDate = new Date();
-    var options = { weekday: 'long' };
-    var dayOfWeek = currentDate.toLocaleDateString('en-US', options);
-    document.getElementById('day').innerHTML = dayOfWeek; 
+    const month = currentDate.getMonth() +1; 
+    const dayOfMonth = currentDate.getDate(); 
+    const getYear = currentDate.getFullYear(); 
+    document.getElementById("date").innerHTML = month + "/" + dayOfMonth + "/" + getYear;
 }
 getCurrentDate(); 
 function getCurrentTimeIn12HourFormat() {
