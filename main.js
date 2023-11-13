@@ -26,18 +26,18 @@ setSchedule = () => {
   var scheduleRow = document.getElementById("schedule-row")
 
   if (date.getDay() !== 0 && date.getDay() !== 6) {
-      scheduleToday = schedule[date.getDay() - 1]
+    scheduleToday = schedule[date.getDay() - 1]
 
-      for (i = 0; i < scheduleToday.length; i++) {
-          td = document.createElement("td")
-          td.textContent = scheduleToday[i]
-          scheduleRow.appendChild(td)
-      }
+    for (i = 0; i < scheduleToday.length; i++) {
+      td = document.createElement("td")
+      td.textContent = scheduleToday[i]
+      scheduleRow.appendChild(td)
+    }
   } else {
-      message = document.createElement("p")
-      message.classList.add("schedule-message")
-      message.textContent = "Have a great weekend! 🎉"
-      scheduleRow.appendChild(message)
+    message = document.createElement("p")
+    message.classList.add("schedule-message")
+    message.textContent = "Have a great weekend! 🎉"
+    scheduleRow.appendChild(message)
   }
 }
 
@@ -54,21 +54,21 @@ setProgress = () => {
   var percentComplete = document.getElementById("percent-complete")
 
   if (now >= startTime && now <= endTime) {
-      // Total duration in milliseconds
-      let duration = endTime - startTime
+    // Total duration in milliseconds
+    let duration = endTime - startTime
 
-      // Elapsed time in milliseconds
-      let elapsed = now - startTime
+    // Elapsed time in milliseconds
+    let elapsed = now - startTime
 
-      // Percentage of time elapsed
-      let percentage = (elapsed / duration) * 100
+    // Percentage of time elapsed
+    let percentage = (elapsed / duration) * 100
 
-      // Update the width of the progress bar
-      r.style.setProperty('--progress-bar', percentage + "%")
-      percentComplete.textContent = Math.floor(percentage) + "%"
+    // Update the width of the progress bar
+    r.style.setProperty('--progress-bar', percentage + "%")
+    percentComplete.textContent = Math.floor(percentage) + "%"
   } else {
-      // When school is not in session, set progress bar width to 0%
-      r.style.setProperty('--progress-bar', '0%')
+    // When school is not in session, set progress bar width to 0%
+    r.style.setProperty('--progress-bar', '0%')
   }
 }
 
@@ -83,18 +83,48 @@ function setTimeRemaining() {
   var timeRemaining = document.getElementById("time-remaining")
 
   if (difference > 0) {
-      let hours = Math.floor(difference / 1000 / 60 / 60)
-      difference -= hours * 1000 * 60 * 60
-      let minutes = Math.floor(difference / 1000 / 60)
+    let hours = Math.floor(difference / 1000 / 60 / 60)
+    difference -= hours * 1000 * 60 * 60
+    let minutes = Math.floor(difference / 1000 / 60)
 
-      timeRemaining.textContent = "Time Remaining: " + hours + "h " + minutes + "m"
+    timeRemaining.textContent = "Time Remaining: " + hours + "h " + minutes + "m"
   }
 }
 
-announce = (message) => {
-  box = document.getElementById("info")
-  box.textContent = message
+const announcementsAPI = "https://aspen-api.herocc.com/api/v1/ma-melrose/announcements";
+var announcementData
+async function getAnnouncements() {
+  try {
+    const response = await fetch(announcementsAPI);
+    const data = await response.json();
+    announcementData = data.data
+    announce()
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
+
+var scrollAnn = 0
+
+function announce() {
+  title = document.createElement("span")
+  title.style.fontWeight = "bold"
+  title.textContent = announcementData[scrollAnn].title + ": "
+
+  box = document.getElementById("info")
+  box.innerHTML = ""
+  box.appendChild(title)
+  box.innerHTML += announcementData[scrollAnn].description
+
+  scrollAnn += 1
+
+  if (scrollAnn == announcementData.length) {
+    scrollAnn = 0
+  }
+}
+
+var announcementData = getAnnouncements()
+setInterval(announce, 8000)
 
 updatePage = () => {
   setDateAndTime()
@@ -102,10 +132,10 @@ updatePage = () => {
   setTimeRemaining()
 }
 
-announce("Join MHS Hack Club!")
 setDateAndTime()
 setSchedule()
 
 updatePage()
 setInterval(updatePage, 1000)
+
 // weather portion
