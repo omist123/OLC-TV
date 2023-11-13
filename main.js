@@ -67,8 +67,8 @@ setProgress = () => {
     r.style.setProperty('--progress-bar', percentage + "%")
     percentComplete.textContent = Math.floor(percentage) + "%"
   } else {
-    // When school is not in session, set progress bar width to 0%
-    r.style.setProperty('--progress-bar', '0%')
+    // When school is not in session, set progress bar width to 100%
+    r.style.setProperty('--progress-bar', '100%')
   }
 }
 

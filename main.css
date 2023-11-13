@@ -137,18 +137,32 @@ td:nth-child(6) {
     align-items: center;
 }
 
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
 .progress {
     height: 32px;
     width: var(--progress-bar);
     background-color: var(--primary);
-    display: flex;
-    justify-content: right;
-    align-items: center;
     transition: width 0.5s;
 }
 
 .percent-complete {
     font-weight: 700;
+    margin: 0 6px 0 10px;
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    right: 0;
+    padding: 4px;
+    color: white;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0.6);
+    font-size: 12px;
 }
 
 .schedule-message {
