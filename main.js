@@ -132,6 +132,22 @@ updatePage = () => {
   setTimeRemaining()
 }
 
+
+
+const announceEndpoint = "https://aspen-api.herocc.com/api/v1/ma-melrose/announcements";
+async function getAnnouncements() {
+  const response = await fetch(announceEndpoint)
+  const data = response.json(); 
+  var announcements = ""; 
+  for (let i =0; i < data.length; i++ )
+  {
+    announcements += data[i].title;
+  }
+  return announcements; 
+}
+// needs to be fixed
+announce(getAnnouncements())
+
 setDateAndTime()
 setSchedule()
 
