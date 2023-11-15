@@ -1,3 +1,5 @@
+
+
 schedule = [
   ["CREW", "A", "B", "C", "D", "E"],
   ["G", "F", "E", "D", "C", "B"],
@@ -130,19 +132,15 @@ function KtoF(val){
   val = Math.round(val);
   return val;
 }
-async function getWeather () {
-  const apiKey = "34e4b3c04d56547f63f183c32b9320";
-  const url = "https://api.openweathermap.org/data/2.5/weather?lat=42.4548&lon=71.0655&appid=34e4b3c04d56547f63f183c32b93206e";
 
-  const response= await fetch(url);
-  const data = await response.json();
-  
-  var temp = data.main.temp;
 
-  temp = KtoF(temp);
+async function getWeather() {
 
-  document.getElementById("weather").textContent = temp + "°F";   
+  // going to fetch from backend server 
 }
+
+
+
 
 var announcementData = getAnnouncements()
 setInterval(announce, 8000)
@@ -151,9 +149,9 @@ updatePage = () => {
   setDateAndTime()
   setProgress()
   setTimeRemaining() 
-  getWeather()
-}
 
+}
+getWeather()
 
 
 
