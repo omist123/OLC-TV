@@ -1,4 +1,4 @@
-
+// Schedule - Add half days?
 
 schedule = [
   ["CREW", "A", "B", "C", "D", "E"],
@@ -7,20 +7,6 @@ schedule = [
   ["G", "F", "E", "D", "B", "A"],
   ["A", "C", "D", "E", "F", "G"]
 ]
-
-setDateAndTime = () => {
-  let date = new Date()
-
-  var pageDate = document.getElementById("date")
-  pageDate.textContent = date.toLocaleDateString()
-
-  const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  var heading = document.querySelector("h1")
-  heading.textContent = weekday[date.getDay()] + "'s Information"
-
-  var pageTime = document.getElementById("time")
-  pageTime.textContent = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-}
 
 setSchedule = () => {
   let date = new Date()
@@ -42,6 +28,24 @@ setSchedule = () => {
     scheduleRow.appendChild(message)
   }
 }
+
+// Heading, date, and time
+
+setDateAndTime = () => {
+  let date = new Date()
+
+  var pageDate = document.getElementById("date")
+  pageDate.textContent = date.toLocaleDateString()
+
+  const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  var heading = document.querySelector("h1")
+  heading.textContent = weekday[date.getDay()] + "'s Information"
+
+  var pageTime = document.getElementById("time")
+  pageTime.textContent = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+}
+
+// Progress bar
 
 setProgress = () => {
   var r = document.querySelector(":root")
@@ -74,6 +78,8 @@ setProgress = () => {
   }
 }
 
+// Show time remaining in schedule heading
+
 function setTimeRemaining() {
   let now = new Date()
 
@@ -93,6 +99,8 @@ function setTimeRemaining() {
   }
 }
 
+// Fetch announcements
+
 const announcementsAPI = "https://aspen-api.herocc.com/api/v1/ma-melrose/announcements";
 var announcementData;
 var scrollAnn = 0;
@@ -109,53 +117,41 @@ async function getAnnouncements() {
 }
 
 function announce() {
+  title = document.createElement("span")
+  title.style.fontWeight = "bold"
+  title.textContent = announcementData[scrollAnn].title + ": "
 
-  var title = document.createElement("span");
-  title.style.fontWeight = "bold";
-  title.textContent = announcementData[scrollAnn].title + ": ";
+  box = document.getElementById("info")
+  box.innerHTML = "" // Clear the announcement box before refilling with another announcement
+  box.appendChild(title) // Append the title
+  box.innerHTML += announcementData[scrollAnn].description // Add on the description to the existing title content
 
-  var box = document.getElementById("info");
-  box.appendChild(title);
-  box.innerHTML = ""; // This line should come after appending the title.
+  scrollAnn += 1
 
-  box.innerHTML += announcementData[scrollAnn].description;
-
-  scrollAnn += 1;
-
-  if (scrollAnn === announcementData.length) {
-    scrollAnn = 0;
+  if (scrollAnn == announcementData.length) {
+    scrollAnn = 0
   }
 }
 
+// Fetch weather
+
 function KtoF(val){
-  val = (val-273.15) *9/5 + 32;
+  val = (val-273.15) * 9/5 + 32;
   val = Math.round(val);
   return val;
 }
 
-
 async function getWeather() {
-
   // going to fetch from backend server 
 }
-
-
-
-
-var announcementData = getAnnouncements()
-setInterval(announce, 8000)
 
 updatePage = () => {
   setDateAndTime()
   setProgress()
   setTimeRemaining() 
-
 }
+
 getWeather()
-
-
-
-// needs to be fixed
 
 setDateAndTime()
 setSchedule()
@@ -163,4 +159,5 @@ setSchedule()
 updatePage()
 setInterval(updatePage, 1000)
 
-// weather portion
+var announcementData = getAnnouncements()
+setInterval(announce, 8000)
