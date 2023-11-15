@@ -92,7 +92,9 @@ function setTimeRemaining() {
 }
 
 const announcementsAPI = "https://aspen-api.herocc.com/api/v1/ma-melrose/announcements";
-var announcementData
+var announcementData;
+var scrollAnn = 0;
+
 async function getAnnouncements() {
   try {
     const response = await fetch(announcementsAPI);
@@ -104,23 +106,42 @@ async function getAnnouncements() {
   }
 }
 
-var scrollAnn = 0
-
 function announce() {
-  title = document.createElement("span")
-  title.style.fontWeight = "bold"
-  title.textContent = announcementData[scrollAnn].title + ": "
 
-  box = document.getElementById("info")
-  box.innerHTML = ""
-  box.appendChild(title)
-  box.innerHTML += announcementData[scrollAnn].description
+  var title = document.createElement("span");
+  title.style.fontWeight = "bold";
+  title.textContent = announcementData[scrollAnn].title + ": ";
 
-  scrollAnn += 1
+  var box = document.getElementById("info");
+  box.appendChild(title);
+  box.innerHTML = ""; // This line should come after appending the title.
 
-  if (scrollAnn == announcementData.length) {
-    scrollAnn = 0
+  box.innerHTML += announcementData[scrollAnn].description;
+
+  scrollAnn += 1;
+
+  if (scrollAnn === announcementData.length) {
+    scrollAnn = 0;
   }
+}
+
+function KtoF(val){
+  val = (val-273.15) *9/5 + 32;
+  val = Math.round(val);
+  return val;
+}
+async function getWeather () {
+  const apiKey = "34e4b3c04d56547f63f183c32b9320";
+  const url = "https://api.openweathermap.org/data/2.5/weather?lat=42.4548&lon=71.0655&appid=34e4b3c04d56547f63f183c32b93206e";
+
+  const response= await fetch(url);
+  const data = await response.json();
+  
+  var temp = data.main.temp;
+
+  temp = KtoF(temp);
+
+  document.getElementById("weather").textContent = temp + "°F";   
 }
 
 var announcementData = getAnnouncements()
@@ -129,24 +150,14 @@ setInterval(announce, 8000)
 updatePage = () => {
   setDateAndTime()
   setProgress()
-  setTimeRemaining()
+  setTimeRemaining() 
+  getWeather()
 }
 
 
 
-const announceEndpoint = "https://aspen-api.herocc.com/api/v1/ma-melrose/announcements";
-async function getAnnouncements() {
-  const response = await fetch(announceEndpoint)
-  const data = response.json(); 
-  var announcements = ""; 
-  for (let i =0; i < data.length; i++ )
-  {
-    announcements += data[i].title;
-  }
-  return announcements; 
-}
+
 // needs to be fixed
-announce(getAnnouncements())
 
 setDateAndTime()
 setSchedule()
