@@ -138,7 +138,7 @@ function KtoF(val){
 async function getWeather() {
   try {
 
-    const response = await fetch('http://localhost:3000/weather');
+    const response = await fetch('https://lc-tv-server.vercel.app/');
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
