@@ -1,6 +1,3 @@
-
-
-
 schedule = [
   ["CREW", "A", "B", "C", "D", "E"],
   ["G", "F", "E", "D", "C", "B"],
@@ -128,32 +125,37 @@ function announce() {
   }
 }
 
-function KtoF(val){
-  val = (val-273.15) *9/5 + 32;
+function KtoF(val) {
+  val = (val - 273.15) * 9 / 5 + 32;
   val = Math.round(val);
   return val;
 }
 
-
 async function getWeather() {
   try {
-
     const response = await fetch('https://lc-tv-server.vercel.app/');
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const data = await response.json(); 
-    
-    var temp = data.main.temp; 
+    const data = await response.json();
+
+    var temp = data.main.temp;
     document.getElementById("weather").textContent = KtoF(temp) + "°F";
   } catch (error) {
     console.error("Error fetching weather data:", error);
   }
 }
 
-
-
+async function getLunch() {
+  try {
+    const response = await fetch("https://school-lunch.onrender.com");
+    const lunch = await response.text();
+    document.getElementById("lunch").textContent = lunch
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 var announcementData = getAnnouncements()
 setInterval(announce, 8000)
@@ -161,19 +163,14 @@ setInterval(announce, 8000)
 updatePage = () => {
   setDateAndTime()
   setProgress()
-  setTimeRemaining() 
+  setTimeRemaining()
 
 }
 
-
-
-
-
 setDateAndTime()
 setSchedule()
+getLunch()
 getWeather()
 
 updatePage()
 setInterval(updatePage, 1000)
-
-// weather portion
