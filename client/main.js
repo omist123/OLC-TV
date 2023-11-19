@@ -113,14 +113,13 @@ function announce() {
   title.textContent = announcementData[scrollAnn].title + ": ";
 
   var box = document.getElementById("info");
-  box.appendChild(title);
-  box.innerHTML = ""; // This line should come after appending the title.
-
+  box.innerHTML = "";
+  box.appendChild(title)
   box.innerHTML += announcementData[scrollAnn].description;
 
   scrollAnn += 1;
 
-  if (scrollAnn === announcementData.length) {
+  if (scrollAnn == announcementData.length) {
     scrollAnn = 0;
   }
 }
