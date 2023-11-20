@@ -2,10 +2,15 @@
   const cors = require('cors');
   const dotenv = require('dotenv')
   dotenv.config();
-
+  
+  
   // Import the 'node-fetch' library
   const app = express();
-  const port = 3000;
+  const port = process.env.PORT || 3000;
+
+  app.use(cors({
+    origin: '*'
+  }));  
   async function getWeather() {
     const apiKey = process.env.API_KEY;
 
@@ -20,7 +25,7 @@
 
     return data;
   }
-  app.use(cors());
+ 
 
   app.get('/weather', async (req, res) => {
     try {
@@ -34,6 +39,9 @@
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+  app.get('/lunch', async (req, res) => {
+    res.send("nothing for now")
+  })
 
   app.listen(port, () => {
     console.log(`Express app listening on port ${port}`);
