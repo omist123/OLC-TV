@@ -132,7 +132,7 @@ function KtoF(val) {
 
 async function getWeather() {
   try {
-    const response = await fetch('https://lc-tv-server.vercel.app/');
+    const response = await fetch('https://lc-tv-server.vercel.app/weather');
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }

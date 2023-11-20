@@ -22,7 +22,7 @@
   }
   app.use(cors());
 
-  app.get('/', async (req, res) => {
+  app.get('/weather', async (req, res) => {
     try {
       // Call the getWeather function to fetch weather data
       const weatherData = await getWeather();
