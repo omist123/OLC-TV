@@ -75,6 +75,7 @@ setProgress = () => {
 function setTimeRemaining() {
   let now = new Date()
 
+  let time815 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 15)
   let time1441 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 14, 41)
 
   // Difference in milliseconds
@@ -82,7 +83,7 @@ function setTimeRemaining() {
 
   var timeRemaining = document.getElementById("time-remaining")
 
-  if (difference > 0) {
+  if (difference > 0 && now >= time815) {
     let hours = Math.floor(difference / 1000 / 60 / 60)
     difference -= hours * 1000 * 60 * 60
     let minutes = Math.floor(difference / 1000 / 60)
