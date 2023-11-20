@@ -133,7 +133,7 @@ function KtoF(val) {
 
 async function getWeather() {
   try {
-    const response = await fetch('https://lc-tv-server.vercel.app/weather');
+    const response = await fetch('http://localhost:3000/weather');
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -149,7 +149,7 @@ async function getWeather() {
 
 async function getLunch() {
   try {
-    const response = await fetch("https://school-lunch.onrender.com");
+    const response = await fetch("http://localhost:3000/lunch");
     const lunch = await response.text();
     document.getElementById("lunch").textContent = lunch
   } catch (error) {
