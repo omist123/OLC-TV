@@ -16,6 +16,10 @@ setDateAndTime = () => {
   var heading = document.querySelector("h1")
   heading.textContent = weekday[date.getDay()] + "'s Information"
 
+  const month = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+  const root = document. querySelector(':root')
+  root.classList.add(month[date.getMonth()])
+
   var pageTime = document.getElementById("time")
   pageTime.textContent = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 }

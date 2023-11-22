@@ -10,13 +10,103 @@
     --border: hsla(0, 0%, 91%, 1);
     --primary: hsla(354, 75%, 48%, 1);
     --secondary: hsla(354, 75%, 93%, 1);
+    --cell-1: #535E61;
+    --cell-2: #445154;
+    --cell-3: #353838;
+    --cell-4: #931310;
+    --cell-5: #CC1010;
+    --cell-6: #FF2E00;
+    --progress-bar: 0%;
+}
+
+.january {
+    --cell-1: #D9B01C;
+    --cell-2: #CC9900;
+    --cell-3: #B8860B;
+    --cell-4: #333333;
+    --cell-5: #1C1C1C;
+    --cell-6: #090909;
+}
+
+.february {
+    --cell-1: #B9375E;
+    --cell-2: #E05780;
+    --cell-3: #FF7AA2;
+    --cell-4: #FF9EBB;
+    --cell-5: #FFC2D4;
+    --cell-6: #FFE0E9;
+}
+
+.march {
+    --cell-1: #C2BCE6;
+    --cell-2: #E2C1E4;
+    --cell-3: #F0CECE;
+    --cell-4: #F0ECCA;
+    --cell-5: #CAEBE9;
+    --cell-6: #DBF5D5;
+}
+
+.april {
+    --cell-1: #ccdcff;
+    --cell-2: #b3beff;
+    --cell-3: #9a99f2;
+    --cell-4: #8b79d9;
+    --cell-5: #805ebf;
+    --cell-6: #6f46a6;
+}
+
+.may {
+    --cell-1: #98B2D4;
+    --cell-2: #C6E1E4;
+    --cell-3: #F0EBE2;
+    --cell-4: #E6D5AB;
+    --cell-5: #93BDB9;
+    --cell-6: #D8F0E5;
+}
+
+.june {
+    --cell-1: #E89766;
+    --cell-2: #BA9898;
+    --cell-3: #9A97C1;
+    --cell-4: #969DEA;
+    --cell-5: #9DB2DD;
+    --cell-6: #BEE5E0;
+}
+
+.september {
+    --cell-1: #735669;
+    --cell-2: #BF8773;
+    --cell-3: #EDC998;
+    --cell-4: #F5E2B8;
+    --cell-5: #B4B786;
+    --cell-6: #618585;
+}
+
+.october {
     --cell-1: hsla(26, 100%, 50%, 1);
     --cell-2: hsla(28, 100%, 50%, 1);
     --cell-3: hsla(31, 100%, 50%, 1);
     --cell-4: hsla(271, 85%, 23%, 1);
     --cell-5: hsla(270, 73%, 35%, 1);
     --cell-6: hsla(272, 63%, 46%, 1);
-    --progress-bar: 0%;
+}
+
+.november {
+    --cell-1: #3A4758;
+    --cell-2: #5F817D;
+    --cell-3: #EBE8BA;
+    --cell-4: #E5AE79;
+    --cell-5: #D47777;
+    --cell-6: #735B75;
+}
+
+.december {
+    --cell-1: #226646;
+    --cell-2: #448538;
+    --cell-3: #D6D6D6;
+    --cell-4: #BE3F3F;
+    --cell-5: #9E1919;
+    --cell-6: #D1AA2C;
 }
 
 .material-symbols-outlined {
