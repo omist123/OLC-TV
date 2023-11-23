@@ -112,7 +112,6 @@ async function getAnnouncements() {
 }
 
 function announce() {
-
   var title = document.createElement("span");
   title.style.fontWeight = "bold";
   title.textContent = announcementData[scrollAnn].title + ": ";
@@ -153,9 +152,10 @@ async function getWeather() {
 
 async function getLunch() {
   try {
-    const response = await fetch("http://localhost:3000/lunch");
+    const response = await fetch("https://mhs-school-lunch.onrender.com/lunch");
     const lunch = await response.text();
     document.getElementById("lunch").textContent = lunch
+    document.getElementById("lunch-loader").style.display = "none";
   } catch (error) {
     console.log(error)
   }

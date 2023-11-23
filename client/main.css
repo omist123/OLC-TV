@@ -7,9 +7,10 @@
 }
 
 :root {
-    --border: hsla(0, 0%, 91%, 1);
+    --border: #E5E4E2;
     --primary: hsla(354, 75%, 48%, 1);
-    --secondary: hsla(354, 75%, 93%, 1);
+    --secondary: rgb(242, 242, 242);
+    /* --secondary: hsla(354, 75%, 93%, 1); */
     --cell-1: #535E61;
     --cell-2: #445154;
     --cell-3: #353838;
@@ -258,4 +259,26 @@ td:nth-child(6) {
 .schedule-message {
     padding: 10px;
     font-size: 24px;
+}
+
+.loader {
+    height: 4px;
+    --c: no-repeat linear-gradient(var(--primary) 0 0);
+    background: var(--c), var(--c), var(--secondary);
+    background-size: 60% 100%;
+    animation: load 4s infinite;
+}
+
+@keyframes load {
+    0% {
+        background-position: -150% 0, -150% 0
+    }
+
+    66% {
+        background-position: 250% 0, -150% 0
+    }
+
+    100% {
+        background-position: 250% 0, 250% 0
+    }
 }
