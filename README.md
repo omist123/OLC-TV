@@ -25,6 +25,12 @@ Deployed on render.com by s-hazel at https://school-lunch.onrender.com
 Github Repository: https://github.com/s-hazel/MHS-Lunch-Data
 
 ## Weather
+Weather Data section uses the [Open Weather map API](https://openweathermap.org/current) to get the current tempeture. This process is done on the express server on the backend. Then the frontend makes a fetch request to the backend to get the tempeture which it then does the Kelvin to Farenheit conversion and displays the data. 
+To Copy: 
+1. Fork the repo
+2. Make your own account on openweathermap.org and get your own API key.
+3. Make a .env file in the server folder with your API key.
+4. Rest of the code should work as is!
 
 ## Announcements
 
