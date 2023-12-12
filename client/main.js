@@ -178,3 +178,4 @@ getWeather()
 
 updatePage()
 setInterval(updatePage, 1000)
+setInterval(getLunch(), 43200000)
