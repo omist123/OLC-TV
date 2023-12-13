@@ -170,12 +170,15 @@ updatePage = () => {
   setTimeRemaining()
 
 }
+updatePageOther = () => {
+  setSchedule()
+  getLunch()
+  
+}
 
-setDateAndTime()
-setSchedule()
-getLunch()
-getWeather()
+
 
 updatePage()
 setInterval(updatePage, 1000)
-setInterval(getLunch(), 43200000)
+setInterval(getWeather(), 3600000)
+setInterval(updatePageOther(), 21600000)
