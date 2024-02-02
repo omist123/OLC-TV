@@ -193,7 +193,7 @@ function refreshAt(hours, minutes, seconds) {
   var timeout = (then.getTime() - now.getTime());
   setTimeout(function() { window.location.reload(true); }, timeout);
 }
-refreshAt(8,10,0)
+refreshAt(7,55,0)
 updatePage()
 setInterval(updatePage, 1000)
 setInterval(getWeather(), 3600000)
